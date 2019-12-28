@@ -149,7 +149,14 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <header className="App-header">
+        <p>Favorite Albums 2019</p>
+      </header>
+      <Carousel aria-label="Jen Ross' favorite albums from 2019">
+        <Covers>
+          
+        </Covers>
+      </Carousel>
     </div>
   );
 }
