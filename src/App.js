@@ -54,6 +54,36 @@ function SlideNavItem({ isCurrent, ...props }) {
   );
 }
 
+function Controls(props) {
+  return <div className="Controls" {...props} />;
+}
+
+function IconButton(props) {
+  return (
+    <button {...props} className="IconButton" />
+  );
+}
+
+function ProgressBar({ animate, time }) {
+  let progress = useProgress(animate, time);
+
+  return (
+    <div className="ProgressBar">
+      <div
+        style={{ width: `${progress * 100}%` }}
+      />
+    </div>
+  );
+}
+
+function SpacerGif({ width }) {
+  return (
+    <div
+      style={{ display: "inline-block", width }}
+    />
+  );
+}
+
 function App() {
   return (
     <div className="App">
