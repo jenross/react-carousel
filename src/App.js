@@ -40,6 +40,20 @@ function EachCover({ isCurrent, takeFocus, image, id, title, children }) {
   );
 }
 
+function SlideNav(props) {
+  return <ul className="SlideNav" {...props} />;
+}
+
+function SlideNavItem({ isCurrent, ...props }) {
+  return (
+    <li className="SlideNavItem">
+      <button {...props} aria-current={isCurrent}>
+        <span />
+      </button>
+    </li>
+  );
+}
+
 function App() {
   return (
     <div className="App">
