@@ -1,5 +1,11 @@
 import React, { useState, useReducer, useEffect, useRef } from "react";
-import { FaPlay, FaPause, FaForward, FaBackward } from "react-icons/fa";
+import {
+  FaPlay,
+  FaPause,
+  FaForward,
+  FaBackward,
+  FaSlideshare
+} from "react-icons/fa";
 import Albums from "./components/Albums";
 import useProgress from "./components/useProgress";
 import "./App.css";
@@ -59,9 +65,7 @@ function Controls(props) {
 }
 
 function IconButton(props) {
-  return (
-    <button {...props} className="IconButton" />
-  );
+  return <button {...props} className="IconButton" />;
 }
 
 function ProgressBar({ animate, time }) {
@@ -69,22 +73,80 @@ function ProgressBar({ animate, time }) {
 
   return (
     <div className="ProgressBar">
-      <div
-        style={{ width: `${progress * 100}%` }}
-      />
+      <div style={{ width: `${progress * 100}%` }} />
     </div>
   );
 }
 
 function SpacerGif({ width }) {
-  return (
-    <div
-      style={{ display: "inline-block", width }}
-    />
-  );
+  return <div style={{ display: "inline-block", width }} />;
 }
 
 function App() {
+  let [state, dispatch] = useReducer(
+    (state, action) => {
+      switch (action.type) {
+        case "NEXT":
+        case "PROGRESS":
+          return {
+            ...state,
+            isPlaying: action.type === "PROGRESS",
+            currentIndex: (state.currentIndex + 1) % Albums.length
+          };
+        case "PAUSE":
+          return {
+            ...state,
+            isPlaying: false
+          };
+        case "PLAY":
+          return {
+            ...state,
+            isPlaying: true
+          };
+        case "PREV":
+          return {
+            ...state,
+            currentIndex:
+              (state.currentIndex - 1 + Albums.length) % Albums.length,
+            isPlaying: false
+          };
+        case "GOTO":
+          return {
+            ...state,
+            takeFocus: true,
+            currentIndex: action.index
+          };
+        case "UNSET_FOCUS":
+          return {
+            ...state,
+            takeFocus: false
+          };
+        default:
+          return state;
+      }
+    },
+    {
+      currentIndex: 0,
+      isPlaying: false,
+      takeFocus: false
+    }
+  );
+
+  useEffect(() => {
+    if (state.isPlaying) {
+      let timeout = setTimeout(() => {
+        dispatch({ type: "PROGRESS" });
+      }, SLIDE_DURATION);
+      return () => clearTimeout(timeout);
+    }
+  }, [state.currentIndex, state.isPlaying]);
+
+  useEffect(() => {
+    if (state.takeFocus) {
+      dispatch({ type: "UNSET_FOCUS" });
+    }
+  }, [state.takeFocus]);
+
   return (
     <div className="App">
       <header className="App-header"></header>
