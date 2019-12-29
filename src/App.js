@@ -200,14 +200,14 @@ function App() {
           )}
           <SpacerGif width="10px" />
           <IconButton
-            aria-label="Previous Slide"
+            aria-label="Previous Album"
             onClick={() => {
               dispatch({ type: "PREV" });
             }}
             children={<FaBackward />}
           />
           <IconButton
-            aria-label="Next Slide"
+            aria-label="Next Album"
             onClick={() => {
               dispatch({ type: "NEXT" });
             }}
