@@ -181,39 +181,45 @@ function App() {
         </SlideNav>
 
         <Controls>
-        {state.isPlaying ? (
+          {state.isPlaying ? (
+            <IconButton
+              aria-label="Pause"
+              onClick={() => {
+                dispatch({ type: "PAUSE" });
+              }}
+              children={<FaPause />}
+            />
+          ) : (
+            <IconButton
+              aria-label="Play"
+              onClick={() => {
+                dispatch({ type: "PLAY" });
+              }}
+              children={<FaPlay />}
+            />
+          )}
+          <SpacerGif width="10px" />
           <IconButton
-            aria-label="Pause"
+            aria-label="Previous Slide"
             onClick={() => {
-              dispatch({ type: "PAUSE" });
+              dispatch({ type: "PREV" });
             }}
-            children={<FaPause />}
+            children={<FaBackward />}
           />
-        ) : (
           <IconButton
-            aria-label="Play"
+            aria-label="Next Slide"
             onClick={() => {
-              dispatch({ type: "PLAY" });
+              dispatch({ type: "NEXT" });
             }}
-            children={<FaPlay />}
+            children={<FaForward />}
           />
-        )}
-        <SpacerGif width="10px" />
-        <IconButton
-          aria-label="Previous Slide"
-          onClick={() => {
-            dispatch({ type: "PREV" });
-          }}
-          children={<FaBackward />}
+        </Controls>
+
+        <ProgressBar
+          key={state.currentIndex + state.isPlaying}
+          time={SLIDE_DURATION}
+          animate={state.isPlaying}
         />
-        <IconButton
-          aria-label="Next Slide"
-          onClick={() => {
-            dispatch({ type: "NEXT" });
-          }}
-          children={<FaForward />}
-        />
-      </Controls>
       </Carousel>
     </div>
   );
