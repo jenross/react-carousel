@@ -14,21 +14,21 @@ a {
 }
 
 [aria-current="page"] {
-  color: red;
+  color: powderblue;
 }
 
 .Slide {
   opacity: 1;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 30px;
+  left: 30px;
+  right: 30px;
+  bottom: 30px;
   list-style-type: none;
   transition: opacity 200ms ease;
-  background-size: cover;
+  /* background-size: cover; */
   background-repeat: no-repeat;
-  background-position: center center;
+  /* background-position: center center; */
 }
 
 .Slide[aria-hidden="true"] {
@@ -46,6 +46,7 @@ a {
   padding: 20px;
   margin-left: 20px;
   margin-top: 20px;
+  font-size: 25px; 
 }
 
 .ProgressBar {
@@ -66,7 +67,7 @@ a {
   border-radius: 50%;
   height: 2em;
   width: 2rem;
-  margin: 5px;
+  margin: 15px;
   outline: none;
   display: flex;
   align-items: center;
@@ -95,6 +96,7 @@ a {
   background: none;
   display: inline-block;
   padding: 0;
+  margin-right: 15px; 
   width: 3rem;
   height: 3rem;
   line-height: 1.8rem;
