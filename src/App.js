@@ -179,6 +179,41 @@ function App() {
             />
           ))}
         </SlideNav>
+
+        <Controls>
+        {state.isPlaying ? (
+          <IconButton
+            aria-label="Pause"
+            onClick={() => {
+              dispatch({ type: "PAUSE" });
+            }}
+            children={<FaPause />}
+          />
+        ) : (
+          <IconButton
+            aria-label="Play"
+            onClick={() => {
+              dispatch({ type: "PLAY" });
+            }}
+            children={<FaPlay />}
+          />
+        )}
+        <SpacerGif width="10px" />
+        <IconButton
+          aria-label="Previous Slide"
+          onClick={() => {
+            dispatch({ type: "PREV" });
+          }}
+          children={<FaBackward />}
+        />
+        <IconButton
+          aria-label="Next Slide"
+          onClick={() => {
+            dispatch({ type: "NEXT" });
+          }}
+          children={<FaForward />}
+        />
+      </Controls>
       </Carousel>
     </div>
   );
