@@ -1,12 +1,12 @@
 import React from "react";
-import betteroblivion from "../assets/betteroblivion";
-import boniver from "../assets/boniver";
-import chance from "../assets/chance";
-import highwomen from "../assets/highwomen";
-import lizzo from "../assets/lizzo";
-import maggie from "../assets/maggie";
-import national from "../assets/national";
-import sturgill from ".../assets/sturgill";
+import betteroblivion from "../assets/betteroblivion.png";
+import boniver from "../assets/boniver.png";
+import chance from "../assets/chance.png";
+import highwomen from "../assets/highwomen.png";
+import lizzo from "../assets/lizzo.png";
+import maggie from "../assets/maggie.png";
+import national from "../assets/national.png";
+import sturgill from "../assets/sturgill.png";
 
 export default [
   {

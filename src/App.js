@@ -154,8 +154,31 @@ function App() {
       </header>
       <Carousel aria-label="Jen Ross' favorite albums from 2019">
         <Covers>
-          
+          {Albums.map((image, index) => (
+            <EachCover
+              key={index}
+              id={`image-${index}`}
+              image={image.img}
+              title={image.title}
+              isCurrent={index === state.currentIndex}
+              takeFocus={state.takeFocus}
+              children={image.content}
+            />
+          ))}
         </Covers>
+
+        <SlideNav>
+          {Albums.map((album, index) => (
+            <SlideNavItem
+              key={index}
+              isCurrent={index === state.currentIndex}
+              aria-label={`Album ${index + 1}`}
+              onClick={() => {
+                dispatch({ type: "GOTO", index });
+              }}
+            />
+          ))}
+        </SlideNav>
       </Carousel>
     </div>
   );
