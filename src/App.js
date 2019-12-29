@@ -6,11 +6,13 @@ import {
   FaBackward,
   FaSlideshare
 } from "react-icons/fa";
+import Alert from "@reach/alert";
+import VisuallyHidden from "@reach/visually-hidden";
 import Albums from "./components/Albums";
 import useProgress from "./components/useProgress";
 import "./App.css";
 
-let SLIDE_DURATION = 3000;
+let SLIDE_DURATION = 4000;
 
 function Carousel(props) {
   return <section className="Carousel" {...props} />;
@@ -220,6 +222,13 @@ function App() {
           time={SLIDE_DURATION}
           animate={state.isPlaying}
         />
+
+        <VisuallyHidden>
+          <Alert>
+            Item {state.currentIndex + 1} of {Albums.length}
+          </Alert>
+        </VisuallyHidden>
+
       </Carousel>
     </div>
   );
